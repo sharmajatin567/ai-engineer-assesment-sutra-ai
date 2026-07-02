@@ -1,12 +1,15 @@
 import asyncio
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import pdfplumber
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-from base.read_config import read_config
-from base.knowledge.knowledge import KnowledgeBankClientFactory
-from utils import parse_sections
+from app.base.read_config import read_config
+from app.base.knowledge.knowledge import KnowledgeBankClientFactory
+from app.utils import parse_sections
 
 DOCS_DIR = Path("app/docs")
 PDFS = ["Leave_Policy.pdf", "Procurement_Process_SOP.pdf"]

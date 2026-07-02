@@ -47,7 +47,7 @@ The flow is a single agent loop driven by 4 tools : `similarity_search`, `csv_sc
 
 Retrieval data is prepared offline by `app/scripts/embed_documents.py`, which parses the source PDFs and populates the ChromaDB collections.
 
-**Abstraction** The codebase is structured around config-driven factories with abstract base classes under `app/base/`, so providers can be swapped without touching call sites:
+**Abstraction:** The codebase is structured around config-driven factories with abstract base classes under `app/base/`, so providers can be swapped without touching call sites:
 
 - `AgentRuntimeBase` + `AgentRuntimeClientFactory` — runtime providers (currently `claude_agent_sdk`) , planning to implement `deepagents`.
 - `KnowledgeBase` + `KnowledgeBankClientFactory` — vector store providers (currently `chromadb`).

@@ -1,7 +1,7 @@
 import sys
 from abc import ABC, abstractmethod
 
-from system_prompt import SYSTEM_PROMPT
+from app.system_prompt import SYSTEM_PROMPT
 
 
 def _stringify(content):
@@ -56,6 +56,8 @@ class ClaudeAgentSDKRuntime(AgentRuntimeBase):
             tools=[], # LLM tried reading CSV from files. This disables inbuilt tools. 
             mcp_servers={"local": {"type": "stdio", "command": sys.executable, "args": self.server_args}},
             allowed_tools=self.allowed_tools,
+            env={"ENABLE_TOOL_SEARCH": "false"},       # load MCP tools eagerly
+            permission_mode="bypassPermissions", 
             setting_sources=[],
             max_turns=self.max_turns,
         )
@@ -77,8 +79,6 @@ class ClaudeAgentSDKRuntime(AgentRuntimeBase):
                         events.append({"type": "thought", "text": block.thinking})
                     elif name == "ToolUseBlock": # block depicting tool use by agent
                         events.append({"type": "tool_call", "name": block.name, "input": block.input})
-                        if "csv" in block.name: # block depicting skill use by agent (currenty there's no exact skill implementation)
-                            events.append({"type": "skill_used", "name": "csv_skill"})
                     elif name == "ToolResultBlock": # tool result passed to the agent after tool use
                         events.append({"type": "tool_result", "output": _stringify(block.content)})
                     elif name == "TextBlock": # response block from the agent

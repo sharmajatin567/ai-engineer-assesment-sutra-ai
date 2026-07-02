@@ -5,8 +5,8 @@ import pandas as pd
 from dotenv import load_dotenv
 from mcp.server.fastmcp import FastMCP
 
-from base.read_config import read_config
-from base.knowledge import KnowledgeBankClientFactory
+from app.base.read_config import read_config
+from app.base.knowledge import KnowledgeBankClientFactory
 
 CSV_PATH = "app/docs/Branch_Revenue_Orders.csv"
 CSV_SKILL = Path("app/mcp_server/csv_skill.md").read_text()

@@ -1,8 +1,12 @@
 import asyncio
+import sys
+from pathlib import Path
 
-from base.read_config import read_config
-from base.agent_runtime import AgentRuntimeClientFactory
-from utils import format_trace, final_text, write_run_log, record_feedback
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from app.base.read_config import read_config
+from app.base.agent_runtime import AgentRuntimeClientFactory
+from app.utils import format_trace, final_text, write_run_log, record_feedback
 
 
 def main():
@@ -33,7 +37,7 @@ def main():
         answer = final_text(events)
 
         # OPTIONAL - format_trace function - uncomment to check agent trace
-        # print(format_trace(events))
+        print(format_trace(events))
 
         print(f"\nAnswer:\n{answer}")
 

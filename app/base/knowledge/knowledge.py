@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from utils import chunk_id
+from app.utils import chunk_id
 
 # Base class for vector store operations
 class KnowledgeBase(ABC):
