@@ -6,11 +6,10 @@ from dotenv import load_dotenv
 from mcp.server.fastmcp import FastMCP
 
 from base.read_config import read_config
-from base.knowledge.knowledge import KnowledgeBankClientFactory
+from base.knowledge import KnowledgeBankClientFactory
 
 CSV_PATH = "app/docs/Branch_Revenue_Orders.csv"
 CSV_SKILL = Path("app/mcp_server/csv_skill.md").read_text()
-NUMERIC_AGGS = {"sum", "mean", "max", "min", "count"}
 
 load_dotenv(".env")
 mcp = FastMCP("acme-tools")

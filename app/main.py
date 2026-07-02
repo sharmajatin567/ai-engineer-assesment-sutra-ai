@@ -1,7 +1,7 @@
 import asyncio
 
 from base.read_config import read_config
-from base.agent_runtime.agent_runtime import AgentRuntimeClientFactory
+from base.agent_runtime import AgentRuntimeClientFactory
 from utils import format_trace, final_text, write_run_log, record_feedback
 
 
