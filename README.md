@@ -16,7 +16,7 @@ cd ai-engineer-assesment-sutra-ai
 - Setup virtual environment, activate, and install requirements: 
 ```
 python -m venv venv
-source venv/bin/activate # for activating virtual env. Use venv\Scripts\activate for windows
+source venv/bin/activate             # for activating virtual env. Use venv\Scripts\activate for windows
 pip install -r requirements.txt
 ```
 
@@ -24,13 +24,13 @@ pip install -r requirements.txt
 
 - Run chromadb server locally on terminal:
 ```
-chroma run --path ./chromad_db
+chroma run --path ./chromad_db.      # starts local chromadb server
 ```
 
 - Open a new terminal inside the git directory, activate virtual environment and run the following:
 ```
-python embed_documnts.py # embed the current documents
-python app/main.py # run the agent
+python embed_documents.py             # embed the current documents
+python app/main.py                   # run the agent
 ```
 
 - Type in your query and see the agent answer. To check agent event trace in terminal, uncomment **line 36** in `main.py`
