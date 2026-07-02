@@ -21,7 +21,7 @@ LLM_CONFIG:
 
 # Agent runtime configuration
 AGENT_RUNTIME_CONFIG:
-  DEFAULT_PROVIDER: "deepagents"
+  DEFAULT_PROVIDER: "claude_agent_sdk"
   PROVIDERS:
     claude_agent_sdk:
       model: "claude-haiku-4-5"
