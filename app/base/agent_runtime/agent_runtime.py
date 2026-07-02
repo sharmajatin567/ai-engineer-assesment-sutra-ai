@@ -49,6 +49,7 @@ class ClaudeAgentSDKRuntime(AgentRuntimeBase):
         options = ClaudeAgentOptions(
             model=self.model,
             system_prompt=SYSTEM_PROMPT,
+            tools=[], # LLM tried reading CSV from files. This disables inbuilt tools. 
             mcp_servers={"local": {"type": "stdio", "command": sys.executable, "args": self.server_args}},
             allowed_tools=self.allowed_tools,
             setting_sources=[],

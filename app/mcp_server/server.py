@@ -21,6 +21,10 @@ async def similarity_search(collection_name: str, query: str, top_k: int = 0) ->
     """Retrieve the most relevant document passages from a knowledge base collection."""
     config = read_config()
     kb = KnowledgeBankClientFactory(config).client
+    provider = config["KNOWLEDGE_CONFIG"]["DEFAULT_PROVIDER"]
+    provider_config = config["KNOWLEDGE_CONFIG"]["PROVIDERS"][provider]
+    if collection_name in provider_config:
+        collection_name = provider_config[collection_name]
     matches = await kb.search(query, collection_name, top_k or None)
     if not matches:
         return "No sufficiently relevant passages found in the knowledge base."
