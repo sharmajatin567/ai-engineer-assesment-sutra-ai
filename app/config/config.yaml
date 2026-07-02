@@ -32,3 +32,10 @@ AGENT_RUNTIME_CONFIG:
         - "mcp__local__csv_schema"
         - "mcp__local__operate_on_csv"
         - "mcp__local__web_search"
+    langgraph_deepagents:
+      model: "claude-haiku-4-5"
+      max_tokens: 2048
+      mcp_server:
+        command: "python"
+        args: ["-m", "app.mcp_server.server"]
+      
