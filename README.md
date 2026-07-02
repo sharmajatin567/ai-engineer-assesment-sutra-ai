@@ -2,7 +2,7 @@
 
 Submission for the assessment of AI Engineer at Sutra.AI
 
-A light-weight assistant for "ACME Corporation" (AI generated corporation name and documents) that answers policy questions from documents, numeric questions from a branch revenue/orders CSV, and external questions via web search. It runs on the Claude Agent SDK with all capabilities exposed as tools over an MCP server.
+A light-weight assistant for "ACME Corporation" (AI generated corporation name and documents) that answers policy questions from documents, numeric questions from a branch revenue/orders CSV, and external questions via web search. It runs on the Claude Agent SDK with all capabilities exposed as tools over an MCP server. All results of the agent runs as required for the assignment have been added to `query_results.xlsx`.
 
 ## Setup
 
@@ -111,3 +111,4 @@ With another day:
 
 - **Improve retrieval** — make the embedding model configurable and try a stronger one, use larger chunks for the chunk index, and tune chunk size, overlap, top-k, and threshold against a real eval set.
 - **Introduce Sub-Agents** - due to small scale of the application, the current approach seems sufficient. But for different/conflicting use case documents (like documents being related to corporate, csv being related to pharmaceutical brand data), a multi-node system with subagents can be introduced. 
+
