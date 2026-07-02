@@ -24,6 +24,7 @@ pip install -r requirements.txt
 
 - Run chromadb server locally on terminal:
 ```
+cd app
 chroma run --path ./chromad_db.      # starts local chromadb server
 ```
 
@@ -33,23 +34,23 @@ python embed_documents.py             # embed the current documents
 python app/main.py                   # run the agent
 ```
 
-- Type in your query and see the agent answer. To check agent event trace in terminal, uncomment **line 36** in `main.py`
+- Type in your query and see the agent answer. To check agent event trace in terminal, uncomment **line 40** in `main.py`
 
 ## Architecture
 
 The flow is a single agent loop driven by 4 tools : `similarity_search`, `csv_schema`, `operate_on_csv`, and `web_search`
 
 1. `app/main.py` - runs the agent in terminal. Each query is passed to the agent runtime along with the running conversation transcript.
-2. `ClaudeAgentSDKRuntime` (`app/base/agent_runtime/agent_runtime.py`) - calls the Claude Agent SDK `query()` with the system prompt, `max_turns`, and an MCP server. The model plans, calls tools, and streams back thoughts, tool calls, tool results, and a final answer, which are collected into an event trace.
-3. `app/mcp_server/server.py` - FastMCP stdio server exposing the four tools
-4. Document retrieval goes to ChromaDB (`app/base/knowledge/knowledge.py`); - structured questions go to the pandas-backed CSV tools; external questions go to Tavily web searc tool (External tool implementation).
+2. `AgentRuntimeClientFactory` (`app/base/agent_runtime/agent_runtime.py`) - initializes and runs the agent runtime class specified in `AGENT_RUNTIME_CONFIG` in `DEFAULT_PROVIDER` key (can be one of `claude_agent_sdk` and `deepagents`) with the system prompt in `system_prompt.py`, `max_turns`, and an MCP server. The model plans, calls tools, and streams back thoughts, tool calls, tool results, and a final answer, which are collected into an event trace.
+3. `app/mcp_server/server.py` - FastMCP stdio server exposing the four tools mentioned above. 
+4. Document retrieval goes to ChromaDB (`app/base/knowledge/knowledge.py`); - structured questions go to the pandas-backed CSV tools; external questions go to Tavily web search tool (External tool implementation).
 5. After each answer, `main.py` prints the trace (commented right now), records a Helpful / Not Helpful rating, and writes the full run (query, events, final answer, feedback) to `app/logs/` as JSON files.
 
 Retrieval data is prepared offline by `app/scripts/embed_documents.py`, which parses the source PDFs and populates the ChromaDB collections.
 
 **Abstraction:** The codebase is structured around config-driven factories with abstract base classes under `app/base/`, so providers can be swapped without touching call sites:
 
-- `AgentRuntimeBase` + `AgentRuntimeClientFactory` — runtime providers (currently `claude_agent_sdk`) , planning to implement `deepagents`.
+- `AgentRuntimeBase` + `AgentRuntimeClientFactory` — runtime providers (`claude_agent_sdk` and `deepagents`).
 - `KnowledgeBase` + `KnowledgeBankClientFactory` — vector store providers (currently `chromadb`).
 - `LLMBase` + `LLMClientFactory` — direct LLM providers (currently `anthropic`). This is a placeholder for now and is not in use. 
 
@@ -95,7 +96,7 @@ The dataset is strictly read-only: every call gets a fresh `df`, the model is in
 
 After every answer the user is asked **Helpful / Not Helpful**, and the rating is written alongside the full event trace to `app/logs/query_*.json`.
 
-**Why this is not RLHF: ** RLHF trains a reward model from preference data and then updates the base model's weights with reinforcement learning. Here nothing of the sort happens: the model is frozen, there is no reward model and no gradient updates. It is a single binary signal logged at inference time — not training.
+**Why this is not RLHF: ** RLHF trains a reward model from preference data and then updates the base model's weights with reinforcement learning. Here nothing of the sort happens: the model is frozen, there is no reward model or gradient updates. It is a single binary signal logged at inference time — not training.
 
 **How feedback could be used later.** The logs pair each query with its tool trace and outcome, so they can be used for an offline evaluation set, get failed cases/tool calls as context and can drive prompt and top-k/threshold tuning.
 
@@ -108,6 +109,5 @@ After every answer the user is asked **Helpful / Not Helpful**, and the rating i
 
 With another day:
 
-- **Introduce New Runtime** — already in progress, requires more agent harness setup effort compared to claude_agent_sdk. Easily configurable via config.yaml and base classes.
 - **Improve retrieval** — make the embedding model configurable and try a stronger one, use larger chunks for the chunk index, and tune chunk size, overlap, top-k, and threshold against a real eval set.
 - **Introduce Sub-Agents** - due to small scale of the application, the current approach seems sufficient. But for different/conflicting use case documents (like documents being related to corporate, csv being related to pharmaceutical brand data), a multi-node system with subagents can be introduced. 

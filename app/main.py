@@ -37,7 +37,7 @@ def main():
         answer = final_text(events)
 
         # OPTIONAL - format_trace function - uncomment to check agent trace
-        print(format_trace(events))
+        # print(format_trace(events))
 
         print(f"\nAnswer:\n{answer}")
 

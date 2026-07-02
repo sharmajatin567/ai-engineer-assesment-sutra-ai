@@ -91,13 +91,61 @@ class ClaudeAgentSDKRuntime(AgentRuntimeBase):
         return events
 
 
+class DeepAgentsRuntime(AgentRuntimeBase):
+
+    def __init__(self, config):
+        self.model = config["model"]
+        self.max_tokens = config.get("max_tokens", 2048)
+        self.server_args = config["mcp_server"]["args"]
+
+    async def run(self, query, context):
+        from langchain_anthropic import ChatAnthropic
+        from langchain_mcp_adapters.client import MultiServerMCPClient
+        from deepagents import create_deep_agent
+
+        client = MultiServerMCPClient({
+            "local": {"command": sys.executable, "args": self.server_args, "transport": "stdio"}
+        })
+        tools = await client.get_tools()
+        model = ChatAnthropic(model=self.model, max_tokens=self.max_tokens)
+        agent = create_deep_agent(model=model, tools=tools, system_prompt=SYSTEM_PROMPT) # Out of the box agent capability by deepagents
+
+        messages = [{"role": turn["role"], "content": turn["content"]} for turn in context]
+        messages.append({"role": "user", "content": query})
+
+        events = []
+        final_parts = []
+        async for update in agent.astream({"messages": messages}, stream_mode="updates"):
+            for payload in update.values():
+                if not isinstance(payload, dict): # Can yield updates where payload is None
+                    continue
+
+                for message in payload.get("messages", []):
+                    name = type(message).__name__
+                    tool_calls = getattr(message, "tool_calls", None)
+                    if tool_calls: # Process tool calls
+                        for call in tool_calls:
+                            events.append({"type": "tool_call", "name": call["name"], "input": call.get("args", {})})
+                    if name == "ToolMessage": # Process tool results
+                        events.append({"type": "tool_result", "output": _stringify(message.content)})
+                    elif name == "AIMessage": # Process final response
+                        text = _stringify(message.content)
+                        if text.strip() and tool_calls: # This condition satisfies for a thought response
+                            events.append({"type": "thought", "text": text})
+                        elif text.strip():
+                            final_parts.append(text)
+
+        events.append({"type": "final", "text": final_parts[-1] if final_parts else ""})
+        return events
+
 
 class AgentRuntimeClientFactory():
 
     def __init__(self, config):
         # Map all available clients for selection
         self.client_map = {
-            "claude_agent_sdk": ClaudeAgentSDKRuntime
+            "claude_agent_sdk": ClaudeAgentSDKRuntime,
+            "deepagents": DeepAgentsRuntime
         }
         runtime_config = config.get("AGENT_RUNTIME_CONFIG", {})
         default_provider = runtime_config.get("DEFAULT_PROVIDER")

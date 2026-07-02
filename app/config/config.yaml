@@ -21,7 +21,7 @@ LLM_CONFIG:
 
 # Agent runtime configuration
 AGENT_RUNTIME_CONFIG:
-  DEFAULT_PROVIDER: "claude_agent_sdk"
+  DEFAULT_PROVIDER: "deepagents"
   PROVIDERS:
     claude_agent_sdk:
       model: "claude-haiku-4-5"
@@ -36,7 +36,7 @@ AGENT_RUNTIME_CONFIG:
         - "mcp__local__operate_on_csv"
         - "mcp__local__web_search"
     
-    langgraph_deepagents: # Langgraph deepagents configuration - Placeholder
+    deepagents: # deepagents configuration - removed langgraph (this is provided by langchain not exactly langgraph's resource)
       model: "claude-haiku-4-5"
       max_tokens: 2048
       mcp_server:
