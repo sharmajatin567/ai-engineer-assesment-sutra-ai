@@ -1,0 +1,14 @@
+chromadb
+python-dotenv
+PyYAML
+anthropic
+claude-agent-sdk
+deepagents
+langgraph
+langchain-anthropic
+langchain-mcp-adapters
+langchain-text-splitters
+mcp
+tavily-python
+pdfplumber
+pandas

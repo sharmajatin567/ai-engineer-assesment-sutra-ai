@@ -1,0 +1,34 @@
+KNOWLEDGE_CONFIG:
+  DEFAULT_PROVIDER: "chromadb"
+  PROVIDERS:
+    chromadb:
+      host: "localhost"
+      port: 8000
+      path: "app/chroma_db"
+      SECTION_INDEX_NAME: "acme_sections"
+      CHUNK_INDEX_NAME: "acme_chunks"
+      TOP_K: 5
+      SIMILARITY_THRESHOLD: 0.3
+
+LLM_CONFIG:
+  DEFAULT_PROVIDER: "anthropic"
+  PROVIDERS:
+    anthropic:
+      model: "claude-haiku-4-5"
+      max_tokens: 2048
+
+AGENT_RUNTIME_CONFIG:
+  DEFAULT_PROVIDER: "claude_agent_sdk"
+  PROVIDERS:
+    claude_agent_sdk:
+      model: "claude-haiku-4-5"
+      max_tokens: 2048
+      max_turns: 8
+      mcp_server:
+        command: "python"
+        args: ["-m", "app.mcp_server.server"]
+      allowed_tools:
+        - "mcp__local__similarity_search"
+        - "mcp__local__csv_schema"
+        - "mcp__local__operate_on_csv"
+        - "mcp__local__web_search"

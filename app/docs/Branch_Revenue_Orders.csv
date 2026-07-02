@@ -1,0 +1,101 @@
+Row_ID,Branch,Branch_Code,Region,Tier,Quarter,Product_Category,Revenue_USD,Orders,Avg_Order_Value_USD,Returns,Net_Revenue_USD,Growth_Pct,CSAT_Score,Headcount
+1,New York,NY,Northeast,Enterprise,Q1 2024,Software Licenses,247621,177,1398.99,8,236429.08,-0.5,3.2,13
+2,Los Angeles,LA,West,Enterprise,Q2 2024,Hardware,106868,399,267.84,27,99636.32,-10.5,3.4,10
+3,Chicago,CH,Midwest,Enterprise,Q3 2024,Professional Services,137314,239,574.54,0,137314.0,14.4,4.1,50
+4,Houston,HO,South,Mid-Market,Q4 2024,Maintenance Contracts,72590,149,487.18,3,71128.46,9.1,4.2,11
+5,Phoenix,PH,Southwest,Mid-Market,Q1 2025,Cloud Solutions,83046,60,1384.1,1,81661.9,20.8,4.6,13
+6,Philadelphia,PL,Northeast,Mid-Market,Q1 2024,Security Products,48210,79,610.25,5,45158.75,-7.2,3.6,15
+7,San Antonio,SA,South,SMB,Q2 2024,Software Licenses,11169,42,265.93,4,10105.28,0.4,4.7,2
+8,San Diego,SD,West,Mid-Market,Q3 2024,Hardware,77823,118,659.52,6,73865.88,-8.3,4.2,12
+9,Dallas,DA,South,Enterprise,Q4 2024,Professional Services,244794,305,802.6,22,227136.8,-8.7,4.2,47
+10,San Jose,SJ,West,SMB,Q1 2025,Maintenance Contracts,15467,69,224.16,0,15467.0,28.2,3.7,3
+11,Austin,AU,South,SMB,Q1 2024,Cloud Solutions,20455,37,552.84,2,19349.32,-4.4,4.0,7
+12,Jacksonville,JK,South,SMB,Q2 2024,Security Products,14865,62,239.76,5,13666.2,18.5,3.7,4
+13,Fort Worth,FW,South,SMB,Q3 2024,Software Licenses,25502,66,386.39,3,24342.83,5.8,3.6,10
+14,Columbus,CO,Midwest,SMB,Q4 2024,Hardware,15196,63,241.21,6,13748.74,24.5,3.8,5
+15,Charlotte,CL,Southeast,Mid-Market,Q1 2025,Professional Services,83857,64,1310.27,3,79926.19,0.6,4.6,9
+16,Indianapolis,IN,Midwest,SMB,Q1 2024,Maintenance Contracts,26585,76,349.8,3,25535.6,18.8,4.5,8
+17,Seattle,SE,Northwest,Enterprise,Q2 2024,Cloud Solutions,248519,354,702.03,8,242902.76,-0.4,3.5,40
+18,Denver,DE,Mountain,Mid-Market,Q3 2024,Security Products,65322,93,702.39,6,61107.66,30.2,4.5,15
+19,Boston,BO,Northeast,Enterprise,Q4 2024,Software Licenses,174895,232,753.86,4,171879.56,11.9,5.0,10
+20,Nashville,NA,Southeast,Mid-Market,Q1 2025,Hardware,79530,66,1205.0,1,78325.0,17.5,4.7,16
+21,New York,NY,Northeast,Enterprise,Q1 2024,Professional Services,236345,152,1554.9,14,214576.4,12.9,3.9,40
+22,Los Angeles,LA,West,Enterprise,Q2 2024,Maintenance Contracts,83009,178,466.34,17,75081.22,23.3,4.4,46
+23,Chicago,CH,Midwest,Enterprise,Q3 2024,Cloud Solutions,169174,177,955.79,5,164395.05,9.3,3.7,21
+24,Houston,HO,South,Mid-Market,Q4 2024,Security Products,62806,82,765.93,1,62040.07,28.9,4.1,12
+25,Phoenix,PH,Southwest,Mid-Market,Q1 2025,Software Licenses,85159,141,603.96,3,83347.12,-4.8,4.1,8
+26,Philadelphia,PL,Northeast,Mid-Market,Q1 2024,Hardware,65348,127,514.55,9,60717.05,3.2,4.9,3
+27,San Antonio,SA,South,SMB,Q2 2024,Professional Services,11665,79,147.66,4,11074.36,-0.7,3.9,5
+28,San Diego,SD,West,Mid-Market,Q3 2024,Maintenance Contracts,87541,132,663.19,1,86877.81,22.4,4.9,5
+29,Dallas,DA,South,Enterprise,Q4 2024,Cloud Solutions,219645,184,1193.72,15,201739.2,32.5,3.4,15
+30,San Jose,SJ,West,SMB,Q1 2025,Security Products,16685,53,314.81,3,15740.57,33.3,4.8,10
+31,Austin,AU,South,SMB,Q1 2024,Software Licenses,32748,66,496.18,5,30267.1,2.7,4.4,7
+32,Jacksonville,JK,South,SMB,Q2 2024,Hardware,22355,77,290.32,1,22064.68,-0.3,4.1,3
+33,Fort Worth,FW,South,SMB,Q3 2024,Professional Services,19078,21,908.48,0,19078.0,15.7,4.3,2
+34,Columbus,CO,Midwest,SMB,Q4 2024,Maintenance Contracts,10326,65,158.86,1,10167.14,-8.8,4.3,2
+35,Charlotte,CL,Southeast,Mid-Market,Q1 2025,Cloud Solutions,86337,102,846.44,3,83797.68,1.1,3.3,18
+36,Indianapolis,IN,Midwest,SMB,Q1 2024,Security Products,15020,54,278.15,4,13907.4,15.1,3.4,5
+37,Seattle,SE,Northwest,Enterprise,Q2 2024,Software Licenses,203987,328,621.91,6,200255.54,19.0,3.5,27
+38,Denver,DE,Mountain,Mid-Market,Q3 2024,Hardware,57759,112,515.71,11,52086.19,-9.5,4.0,6
+39,Boston,BO,Northeast,Enterprise,Q4 2024,Professional Services,95889,326,294.14,6,94124.16,-0.3,4.5,17
+40,Nashville,NA,Southeast,Mid-Market,Q1 2025,Maintenance Contracts,65146,117,556.8,2,64032.4,1.1,3.5,10
+41,New York,NY,Northeast,Enterprise,Q1 2024,Cloud Solutions,99761,346,288.33,6,98031.02,-9.6,4.7,39
+42,Los Angeles,LA,West,Enterprise,Q2 2024,Security Products,83868,167,502.2,7,80352.6,-4.2,4.9,36
+43,Chicago,CH,Midwest,Enterprise,Q3 2024,Software Licenses,206185,229,900.37,1,205284.63,-4.3,4.8,5
+44,Houston,HO,South,Mid-Market,Q4 2024,Hardware,55586,93,597.7,7,51402.1,1.4,4.9,20
+45,Phoenix,PH,Southwest,Mid-Market,Q1 2025,Professional Services,73376,122,601.44,4,70970.24,-1.8,3.5,4
+46,Philadelphia,PL,Northeast,Mid-Market,Q1 2024,Maintenance Contracts,67957,129,526.8,5,65323.0,-9.3,3.3,18
+47,San Antonio,SA,South,SMB,Q2 2024,Cloud Solutions,24477,78,313.81,2,23849.38,-9.3,4.7,10
+48,San Diego,SD,West,Mid-Market,Q3 2024,Security Products,35250,83,424.7,1,34825.3,19.7,3.3,10
+49,Dallas,DA,South,Enterprise,Q4 2024,Software Licenses,185847,181,1026.78,18,167364.96,-0.4,4.9,43
+50,San Jose,SJ,West,SMB,Q1 2025,Hardware,9302,59,157.66,5,8513.7,15.4,3.3,10
+51,Austin,AU,South,SMB,Q1 2024,Professional Services,18366,79,232.48,5,17203.6,-0.8,3.7,8
+52,Jacksonville,JK,South,SMB,Q2 2024,Maintenance Contracts,12288,62,198.19,3,11693.43,2.9,4.4,3
+53,Fort Worth,FW,South,SMB,Q3 2024,Cloud Solutions,8305,49,169.49,4,7627.04,34.8,4.3,3
+54,Columbus,CO,Midwest,SMB,Q4 2024,Security Products,25617,33,776.27,1,24840.73,31.9,4.1,3
+55,Charlotte,CL,Southeast,Mid-Market,Q1 2025,Software Licenses,87623,91,962.89,2,85697.22,8.6,3.9,20
+56,Indianapolis,IN,Midwest,SMB,Q1 2024,Hardware,31053,39,796.23,0,31053.0,19.4,4.3,10
+57,Seattle,SE,Northwest,Enterprise,Q2 2024,Professional Services,158480,173,916.07,4,154815.72,0.4,4.9,11
+58,Denver,DE,Mountain,Mid-Market,Q3 2024,Maintenance Contracts,78655,130,605.04,4,76234.84,16.4,3.5,13
+59,Boston,BO,Northeast,Enterprise,Q4 2024,Cloud Solutions,133371,255,523.02,8,129186.84,30.6,4.1,8
+60,Nashville,NA,Southeast,Mid-Market,Q1 2025,Security Products,36048,141,255.66,4,35025.36,-9.9,4.0,13
+61,New York,NY,Northeast,Enterprise,Q1 2024,Software Licenses,114293,254,449.97,14,107993.42,13.9,3.5,32
+62,Los Angeles,LA,West,Enterprise,Q2 2024,Hardware,227038,124,1830.95,11,206897.55,30.5,3.4,39
+63,Chicago,CH,Midwest,Enterprise,Q3 2024,Professional Services,89444,309,289.46,4,88286.16,8.2,4.2,7
+64,Houston,HO,South,Mid-Market,Q4 2024,Maintenance Contracts,50202,106,473.6,0,50202.0,30.2,4.8,9
+65,Phoenix,PH,Southwest,Mid-Market,Q1 2025,Cloud Solutions,74699,91,820.87,5,70594.65,24.7,4.4,16
+66,Philadelphia,PL,Northeast,Mid-Market,Q1 2024,Security Products,70675,79,894.62,3,67991.14,28.6,4.9,8
+67,San Antonio,SA,South,SMB,Q2 2024,Software Licenses,21510,21,1024.29,1,20485.71,24.8,3.5,8
+68,San Diego,SD,West,Mid-Market,Q3 2024,Hardware,82575,145,569.48,12,75741.24,-0.3,4.8,8
+69,Dallas,DA,South,Enterprise,Q4 2024,Professional Services,108336,315,343.92,30,98018.4,-1.5,4.8,34
+70,San Jose,SJ,West,SMB,Q1 2025,Maintenance Contracts,19457,39,498.9,1,18958.1,-1.5,4.7,5
+71,Austin,AU,South,SMB,Q1 2024,Cloud Solutions,21056,41,513.56,0,21056.0,33.4,3.7,6
+72,Jacksonville,JK,South,SMB,Q2 2024,Security Products,19506,61,319.77,5,17907.15,34.1,4.1,10
+73,Fort Worth,FW,South,SMB,Q3 2024,Software Licenses,18851,80,235.64,4,17908.44,-3.6,3.2,6
+74,Columbus,CO,Midwest,SMB,Q4 2024,Hardware,9253,26,355.88,1,8897.12,22.2,4.3,7
+75,Charlotte,CL,Southeast,Mid-Market,Q1 2025,Professional Services,58599,137,427.73,1,58171.27,6.1,5.0,9
+76,Indianapolis,IN,Midwest,SMB,Q1 2024,Maintenance Contracts,16346,22,743.0,0,16346.0,12.4,4.5,10
+77,Seattle,SE,Northwest,Enterprise,Q2 2024,Cloud Solutions,131651,306,430.23,30,118744.1,19.2,4.0,26
+78,Denver,DE,Mountain,Mid-Market,Q3 2024,Security Products,70839,100,708.39,1,70130.61,21.8,4.4,12
+79,Boston,BO,Northeast,Enterprise,Q4 2024,Software Licenses,212939,278,765.97,10,205279.3,6.9,4.4,23
+80,Nashville,NA,Southeast,Mid-Market,Q1 2025,Hardware,66333,76,872.8,6,61096.2,19.8,3.5,8
+81,New York,NY,Northeast,Enterprise,Q1 2024,Professional Services,241353,274,880.85,26,218450.9,-12.0,3.9,23
+82,Los Angeles,LA,West,Enterprise,Q2 2024,Maintenance Contracts,135098,340,397.35,20,127151.0,9.9,4.6,33
+83,Chicago,CH,Midwest,Enterprise,Q3 2024,Cloud Solutions,136020,381,357.01,10,132449.9,19.0,4.1,23
+84,Houston,HO,South,Mid-Market,Q4 2024,Security Products,63780,144,442.92,5,61565.4,-7.6,4.3,10
+85,Phoenix,PH,Southwest,Mid-Market,Q1 2025,Software Licenses,74092,99,748.4,3,71846.8,-5.1,3.6,4
+86,Philadelphia,PL,Northeast,Mid-Market,Q1 2024,Hardware,46046,120,383.72,12,41441.36,-8.6,4.3,16
+87,San Antonio,SA,South,SMB,Q2 2024,Professional Services,28636,56,511.36,5,26079.2,6.0,3.5,8
+88,San Diego,SD,West,Mid-Market,Q3 2024,Maintenance Contracts,45989,78,589.6,0,45989.0,30.0,4.4,6
+89,Dallas,DA,South,Enterprise,Q4 2024,Cloud Solutions,191449,232,825.21,22,173294.38,12.3,3.5,8
+90,San Jose,SJ,West,SMB,Q1 2025,Security Products,26265,35,750.43,0,26265.0,9.5,4.9,9
+91,Austin,AU,South,SMB,Q1 2024,Software Licenses,29875,53,563.68,4,27620.28,2.9,5.0,9
+92,Jacksonville,JK,South,SMB,Q2 2024,Hardware,28075,72,389.93,6,25735.42,27.0,4.5,10
+93,Fort Worth,FW,South,SMB,Q3 2024,Professional Services,22611,77,293.65,7,20555.45,9.2,3.5,5
+94,Columbus,CO,Midwest,SMB,Q4 2024,Maintenance Contracts,28894,37,780.92,3,26551.24,17.5,4.6,6
+95,Charlotte,CL,Southeast,Mid-Market,Q1 2025,Cloud Solutions,58827,69,852.57,1,57974.43,0.8,4.5,13
+96,Indianapolis,IN,Midwest,SMB,Q1 2024,Security Products,25699,25,1027.96,0,25699.0,6.0,3.4,4
+97,Seattle,SE,Northwest,Enterprise,Q2 2024,Software Licenses,136086,152,895.3,10,127133.0,13.5,3.9,31
+98,Denver,DE,Mountain,Mid-Market,Q3 2024,Hardware,34080,86,396.28,6,31702.32,30.5,4.7,3
+99,Boston,BO,Northeast,Enterprise,Q4 2024,Professional Services,230913,314,735.39,22,214734.42,2.0,4.1,29
+100,Nashville,NA,Southeast,Mid-Market,Q1 2025,Maintenance Contracts,85931,113,760.45,11,77566.05,13.7,4.2,10

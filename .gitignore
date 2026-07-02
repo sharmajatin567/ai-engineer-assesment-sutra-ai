@@ -216,3 +216,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project artifacts
+app/chroma_db/
+app/logs/
+app/.DS_Store
+.DS_Store
