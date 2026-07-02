@@ -111,4 +111,5 @@ With another day:
 
 - **Improve retrieval** — make the embedding model configurable and try a stronger one, use larger chunks for the chunk index, and tune chunk size, overlap, top-k, and threshold against a real eval set.
 - **Introduce Sub-Agents** - due to small scale of the application, the current approach seems sufficient. But for different/conflicting use case documents (like documents being related to corporate, csv being related to pharmaceutical brand data), a multi-node system with subagents can be introduced. 
+- **Improve Data Compliance and Guardrails** - there are very basic guardrails in place for data flow to the llm and for uncertainity which can definitely be improved by adding some custom PII and audit layers. 
 
