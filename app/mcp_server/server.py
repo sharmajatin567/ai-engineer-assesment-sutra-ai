@@ -46,10 +46,12 @@ def csv_schema() -> str:
 def operate_on_csv(code: str) -> str:
     df = pd.read_csv(CSV_PATH)
     results_local = {}
-    exec(code, {"df":df}, results_local)
-    result = results_local.get("result")
+    exec(code, {"df":df}, results_local) # Inject df for use
+    result = results_local.get("result") # Get result derived by llm
     if not result:
-        return f"No variable 'result' present in generated code: {code}"
+        # Return tool error if result variable is not initialized in llm generated code
+        return f"No variable 'result' present in generated code: {code}" 
+    
     return f"Result in variable 'result' : {result}"
 
 
@@ -58,11 +60,14 @@ def web_search(query: str) -> str:
     """Search the public web for external or current information."""
     from tavily import TavilyClient
     client = TavilyClient(api_key=os.getenv("TAVILY_API_KEY"))
+
     results = client.search(query).get("results", [])
+
     if not results:
         return "No web results found."
+    
     return "\n\n".join(
-        f"{r.get('title')} — {r.get('url')}\n{r.get('content')}" for r in results[:5]
+        f"Title: {r.get('title')} — URL: {r.get('url')}\n Content: {r.get('content')}" for r in results[:5]
     )
 
 

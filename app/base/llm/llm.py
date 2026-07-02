@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-
+# Base class for LLM implementation
 class LLMBase(ABC):
 
     def __init__(self):
@@ -10,7 +10,7 @@ class LLMBase(ABC):
     def generate(self, prompt, system):
         pass
 
-
+# Anthropic llm model class
 class AnthropicLLM(LLMBase):
 
     def __init__(self, config):
@@ -20,6 +20,7 @@ class AnthropicLLM(LLMBase):
         self.client = anthropic.Anthropic()
 
     def generate(self, prompt, system=None):
+        """Generate output text using user prompt and system message"""
         response = self.client.messages.create(
             model=self.model,
             max_tokens=self.max_tokens,

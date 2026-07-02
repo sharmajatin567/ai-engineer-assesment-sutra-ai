@@ -5,6 +5,7 @@ from system_prompt import SYSTEM_PROMPT
 
 
 def _stringify(content):
+    """Return typecasted string version of the content"""
     if isinstance(content, str):
         return content
     if isinstance(content, list):
@@ -19,12 +20,14 @@ def _stringify(content):
 
 
 def _build_prompt(query, context):
+    """Builds initial prompt for agent runtime"""
     if not context:
         return query
     transcript = "\n".join(f"{turn['role'].upper()}: {turn['content']}" for turn in context)
     return f"{transcript}\nUSER: {query}"
 
 
+# Base class for Agent Runtime
 class AgentRuntimeBase(ABC):
 
     def __init__(self):
@@ -34,7 +37,7 @@ class AgentRuntimeBase(ABC):
     async def run(self, query, context):
         pass
 
-
+# Inherited class - uses claude_agent_sdk library with Claude Code's engine
 class ClaudeAgentSDKRuntime(AgentRuntimeBase):
 
     def __init__(self, config):
@@ -44,6 +47,7 @@ class ClaudeAgentSDKRuntime(AgentRuntimeBase):
         self.server_args = config["mcp_server"]["args"]
 
     async def run(self, query, context):
+        """Agent loop : runs the agent with tools"""
         from claude_agent_sdk import query as sdk_query, ClaudeAgentOptions, ResultMessage
 
         options = ClaudeAgentOptions(
@@ -69,15 +73,15 @@ class ClaudeAgentSDKRuntime(AgentRuntimeBase):
                     continue
                 for block in content:
                     name = type(block).__name__
-                    if name == "ThinkingBlock":
+                    if name == "ThinkingBlock": # internal thought block from claude
                         events.append({"type": "thought", "text": block.thinking})
-                    elif name == "ToolUseBlock":
+                    elif name == "ToolUseBlock": # block depicting tool use by agent
                         events.append({"type": "tool_call", "name": block.name, "input": block.input})
-                        if "csv" in block.name:
+                        if "csv" in block.name: # block depicting skill use by agent (currenty there's no exact skill implementation)
                             events.append({"type": "skill_used", "name": "csv_skill"})
-                    elif name == "ToolResultBlock":
+                    elif name == "ToolResultBlock": # tool result passed to the agent after tool use
                         events.append({"type": "tool_result", "output": _stringify(block.content)})
-                    elif name == "TextBlock":
+                    elif name == "TextBlock": # response block from the agent
                         final_parts.append(block.text)
         except Exception as error:
             events.append({"type": "final", "text": f"[runtime error] {error}"})
@@ -91,13 +95,17 @@ class ClaudeAgentSDKRuntime(AgentRuntimeBase):
 class AgentRuntimeClientFactory():
 
     def __init__(self, config):
+        # Map all available clients for selection
         self.client_map = {
             "claude_agent_sdk": ClaudeAgentSDKRuntime
         }
         runtime_config = config.get("AGENT_RUNTIME_CONFIG", {})
         default_provider = runtime_config.get("DEFAULT_PROVIDER")
+
+        # Get default provider and initialize correct provider class
         provider_class = self.client_map.get(default_provider)
         if not provider_class:
             raise ValueError("DEFAULT_PROVIDER not present in config")
+        
         provider_config = runtime_config.get("PROVIDERS", {}).get(default_provider)
-        self.client = provider_class(provider_config)
+        self.client = provider_class(provider_config) # default provider client initialized

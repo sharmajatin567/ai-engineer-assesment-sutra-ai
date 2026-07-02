@@ -29,11 +29,14 @@ async def embed():
     for name in PDFS:
         pages = _page_texts(DOCS_DIR / name)
 
+        # Index sections
         sections = parse_sections(pages, name)
         section_docs = [section["document"] for section in sections]
         section_metas = [section["metadata"] for section in sections]
         count = await kb.bulk_insert(section_docs, section_metas, section_index)
         print(f"{count} Sections indexed for document {name}")
+
+        # Index chunks
         chunk_docs = []
         chunk_metas = []
         for page_number, text in enumerate(pages, start=1):

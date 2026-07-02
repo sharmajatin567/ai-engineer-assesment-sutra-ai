@@ -1,3 +1,4 @@
+# Knowledge configurations
 KNOWLEDGE_CONFIG:
   DEFAULT_PROVIDER: "chromadb"
   PROVIDERS:
@@ -10,6 +11,7 @@ KNOWLEDGE_CONFIG:
       TOP_K: 5
       SIMILARITY_THRESHOLD: 0.3
 
+# LLM configurations - Placeholder for implemented base class
 LLM_CONFIG:
   DEFAULT_PROVIDER: "anthropic"
   PROVIDERS:
@@ -17,6 +19,7 @@ LLM_CONFIG:
       model: "claude-haiku-4-5"
       max_tokens: 2048
 
+# Agent runtime configuration
 AGENT_RUNTIME_CONFIG:
   DEFAULT_PROVIDER: "claude_agent_sdk"
   PROVIDERS:
@@ -32,7 +35,8 @@ AGENT_RUNTIME_CONFIG:
         - "mcp__local__csv_schema"
         - "mcp__local__operate_on_csv"
         - "mcp__local__web_search"
-    langgraph_deepagents:
+    
+    langgraph_deepagents: # Langgraph deepagents configuration - Placeholder
       model: "claude-haiku-4-5"
       max_tokens: 2048
       mcp_server:

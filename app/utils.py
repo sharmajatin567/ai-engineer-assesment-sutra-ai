@@ -7,13 +7,14 @@ from pathlib import Path
 
 LOG_DIR = Path("app/logs")
 
-SECTION_RE = re.compile(r'^(\d+(?:\.\d+)*)\.?\s+([A-Z].*\S)$')
-STEP_RE = re.compile(r'^(Step\s+\d+)\s*:?\s*(.*)$')
-BOILERPLATE_RE = re.compile(r'(ACME Corporation\s*\||Confidential|Internal Use Only|Page\s+\d+)')
+SECTION_RE = re.compile(r'^(\d+(?:\.\d+)*)\.?\s+([A-Z].*\S)$') # Regex patten for matching section
+STEP_RE = re.compile(r'^(Step\s+\d+)\s*:?\s*(.*)$') # Regex pattern for matching step
+BOILERPLATE_RE = re.compile(r'(ACME Corporation\s*\||Confidential|Internal Use Only|Page\s+\d+)') # edge case boilerplate handler for skipping titles
 
 
 
 def chunk_id(collection_name, document):
+    """Assigns chunk id to a chunk"""
     digest = hashlib.md5(f"{collection_name}:{document}".encode()).hexdigest()
     return f"{collection_name}-{digest}"
 
